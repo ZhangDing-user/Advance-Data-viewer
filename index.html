@@ -206,9 +206,15 @@
    - 把 REPO 填成 '用户名/仓库名' 可以强制指定。
    ============================================================ */
 var REPO = 'ZhangDing-user/Advance-Data-viewer';
+/* 程序本体托管在品牌托管站（GitHub 附件上传受限），按钮直接指过去 */
+var MIRROR = 'https://adv-data-viewer.app.workbuddy.host/Advanced%20Data%20Viewer_v1.10.13.exe?sharecode=ERE2Z7JFTC';
 
 (function(){
   var btn = document.querySelector('a.btn');
+  if (typeof MIRROR !== 'undefined' && MIRROR) {
+    btn.href = MIRROR;
+    btn.removeAttribute('download');
+  }
   var releasePage = (function(){
     if (REPO) return 'https://github.com/' + REPO + '/releases/latest';
     var host = location.hostname || '';
@@ -259,6 +265,21 @@ var REPO = 'ZhangDing-user/Advance-Data-viewer';
     document.body.appendChild(ta); ta.select();
     try { document.execCommand('copy'); done(); } catch(e){}
     document.body.removeChild(ta);
+  }
+})();
+</script>
+
+<script>
+/* 托管平台给分享链接带 ?sharecode=... ，子资源/文档链接必须原样带上，
+   否则 403。GitHub Pages 等没有查询串的环境下这段什么都不做。 */
+(function(){
+  var q = location.search;
+  if (!q || q === '?') return;
+  var links = document.querySelectorAll('a[href]');
+  for (var i = 0; i < links.length; i++) {
+    var a = links[i], h = a.getAttribute('href');
+    if (!h || /^(https?:|mailto:|#)/i.test(h)) continue;
+    a.setAttribute('href', h + (h.indexOf('?') >= 0 ? '&' : '') + q.slice(1));
   }
 })();
 </script>
