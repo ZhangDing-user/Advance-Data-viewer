@@ -69,7 +69,7 @@ POST /api/command           {"text":"打开 sample_01，画第 1 通道对时间
 A single-file Windows viewer for general materials test data, with an HTTP interface an AI agent can drive.
 
 It opens the machine's native records directly (no export step), and also reads `.csv` / `.tsv` /
-`.tsv` / `.txt` / `.dat`. Up to 7 independent Y axes in one plot; derived-channel expressions with
+`.txt` / `.dat`. Up to 7 independent Y axes in one plot; derived-channel expressions with
 zero-phase filtering (`lp0` / `hp0`); A–B measurement, per-cycle and per-segment statistics that can be
 saved back as channels; phase difference from a single-bin DFT on the real timestamps; curve fitting;
 PNG and CSV export. All 28 capabilities are exposed over local HTTP, so an external agent can drive the
