@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Data Viewer v1.10.13 — 下载</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --mute:#5f6771;
+    --line:#e3e7ec; --accent:#2563eb; --accent-ink:#ffffff; --ok:#0f7a4d;
+    --warn-bg:#fff8e6; --warn-line:#f0d48a; --code:#eef1f5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#14171a; --card:#1b1f24; --ink:#e9edf2; --mute:#a2acb8;
+      --line:#2a3037; --accent:#5b9bff; --accent-ink:#0b1220; --ok:#4ade80;
+      --warn-bg:#2a2416; --warn-line:#5a4a1e; --code:#22282f;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:40px 20px 64px; background:var(--bg); color:var(--ink);
+    font:15px/1.65 "Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto}
+  header{display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:6px}
+  h1{margin:0; font-size:27px; letter-spacing:-.2px}
+  .ver{
+    display:inline-block; margin-left:8px; padding:2px 9px; border-radius:999px;
+    background:var(--accent); color:var(--accent-ink); font-size:12.5px; font-weight:700;
+    vertical-align:3px; letter-spacing:.2px;
+  }
+  .lead{margin:8px 0 26px; color:var(--mute); font-size:15px}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:24px 26px; margin-bottom:18px;
+  }
+  .dl{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+    background:var(--accent); color:var(--accent-ink); font-weight:700; font-size:16px;
+    padding:13px 26px; border-radius:10px; border:0; transition:transform .12s ease, filter .12s ease;
+  }
+  .btn:hover{filter:brightness(1.07)}
+  .btn:active{transform:translateY(1px)}
+  .btn svg{width:19px; height:19px}
+  .meta{color:var(--mute); font-size:13.5px; line-height:1.9}
+  .meta b{color:var(--ink); font-weight:600}
+  h2{font-size:15px; margin:0 0 12px; letter-spacing:.3px; text-transform:uppercase; color:var(--mute)}
+  ol,ul{margin:0; padding-left:22px}
+  li{margin:7px 0}
+  code{
+    background:var(--code); padding:1.5px 6px; border-radius:5px;
+    font:13px/1.5 ui-monospace,Consolas,"Courier New",monospace;
+    word-break:break-all;
+  }
+  .hash{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    background:var(--code); border-radius:9px; padding:11px 13px; margin:10px 0 0;
+  }
+  .hash code{background:none; padding:0; font-size:12.5px; letter-spacing:.2px}
+  .copy{
+    margin-left:auto; background:var(--card); border:1px solid var(--line); color:var(--mute);
+    border-radius:7px; padding:5px 11px; font-size:12.5px; cursor:pointer; font-family:inherit;
+  }
+  .copy:hover{color:var(--ink); border-color:var(--mute)}
+  .note{
+    background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:11px;
+    padding:14px 17px; font-size:13.8px;
+  }
+  .note b{color:var(--ink)}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:0 30px}
+  @media (max-width:640px){ .grid{grid-template-columns:1fr} body{padding-top:26px} h1{font-size:22px} }
+  footer{color:var(--mute); font-size:13px; text-align:center; margin-top:30px; line-height:2}
+  a{color:var(--accent)}
+  .en{display:none}
+  body.en .zh{display:none}
+  body.en .en{display:block}
+  .lang{
+    margin-left:auto; background:var(--card); border:1px solid var(--line); color:var(--mute);
+    border-radius:8px; padding:6px 13px; font-size:13px; cursor:pointer; font-family:inherit;
+  }
+  .lang:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Advanced Data Viewer<span class="ver">v1.10.13</span></h1>
+    <button class="lang" id="lang">EN</button>
+  </header>
+
+  <p class="lead zh">通用材料试验数据查看器，带 AI 控制接口。单文件免安装，直接打开试验机原始记录，最多 7 条独立 Y 轴，28 个 HTTP 工具交给 AI 驱动。</p>
+  <p class="lead en">A general-purpose materials test data viewer with an AI control interface. One file, nothing to install: opens the machine's native records directly, up to 7 independent Y axes, 28 HTTP tools an AI agent can drive.</p>
+
+  <div class="card">
+    <div class="dl">
+      <a class="btn" href="Advanced%20Data%20Viewer_v1.10.13.exe" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 21h16"/></svg>
+        <span class="zh">下载 v1.10.13</span><span class="en">Download v1.10.13</span>
+      </a>
+      <div class="meta zh">
+        <b>46.8 MB</b> · Windows 10 / 11（64 位）· 单文件免安装<br>
+        文件名 <code>Advanced Data Viewer_v1.10.13.exe</code><br>
+        <span id="dlAlt" style="display:none">打不开？<a href="#" id="dlAltLink">去 Releases 页面手动下载</a></span>
+      </div>
+      <div class="meta en">
+        <b>46.8 MB</b> · Windows 10 / 11 (64-bit) · single file, no install<br>
+        File name <code>Advanced Data Viewer_v1.10.13.exe</code><br>
+        <span id="dlAltEn" style="display:none">Link not working? <a href="#" id="dlAltLinkEn">Download from the Releases page</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="zh">文件校验</h2>
+    <h2 class="en">Checksum</h2>
+    <p class="zh" style="margin:0;color:var(--mute);font-size:13.8px">下载后可比对 SHA-256，一致即说明文件完整、未被篡改。</p>
+    <p class="en" style="margin:0;color:var(--mute);font-size:13.8px">Compare the SHA-256 after downloading to confirm the file is intact.</p>
+    <div class="hash">
+      <code id="sha">55b9607de59bd95abfd695494e326c4561fa8d3c7522de664878c8376532a299</code>
+      <button class="copy" id="cp">复制 / Copy</button>
+    </div>
+    <p style="margin:14px 0 0;color:var(--mute);font-size:13px" class="zh">PowerShell 里核对：<code>Get-FileHash 'Advanced Data Viewer_v1.10.13.exe' -Algorithm SHA256</code></p>
+    <p style="margin:14px 0 0;color:var(--mute);font-size:13px" class="en">Verify in PowerShell: <code>Get-FileHash 'Advanced Data Viewer_v1.10.13.exe' -Algorithm SHA256</code></p>
+  </div>
+
+  <div class="card">
+    <h2 class="zh">运行</h2>
+    <h2 class="en">Run</h2>
+    <ol class="zh">
+      <li>把 exe 放到任意目录（不需要旁边有别的文件）。</li>
+      <li>双击运行。会弹出一个黑色命令行窗口，<b>不要关</b>——关掉就等于退出程序。</li>
+      <li>浏览器随后自动打开 <code>http://127.0.0.1:8770</code>；首次启动约 4~5 秒。</li>
+      <li>点文件名右侧的 <code>...</code> 选数据文件；数据目录可在 <code>config.json</code> 的 <code>roots</code> 里改。</li>
+    </ol>
+    <ol class="en">
+      <li>Put the exe in any folder; it needs no companion files.</li>
+      <li>Double-click it. A console window appears — keep it open, closing it quits the program.</li>
+      <li>The browser opens <code>http://127.0.0.1:8770</code>; the first start takes about 4-5 seconds.</li>
+      <li>Click <code>...</code> next to the file name to pick data; set your data roots in <code>config.json</code>.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2 class="zh">首次运行时 Windows 可能拦一下</h2>
+    <h2 class="en">Windows may warn on first run</h2>
+    <p class="zh" style="margin:0">这个 exe 没有购买代码签名证书，Windows SmartScreen 会显示“Windows 已保护你的电脑”。点<b>“更多信息” → “仍要运行”</b>即可。若想先确认文件没问题，比对上面的 SHA-256。</p>
+    <p class="en" style="margin:0">The exe is not code-signed, so SmartScreen may show "Windows protected your PC". Click <b>More info → Run anyway</b>. To be sure the file is genuine, compare the SHA-256 above.</p>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <h2 class="zh">包含</h2><h2 class="en">Includes</h2>
+        <ul class="zh">
+          <li>最多 7 条独立 Y 轴叠加</li>
+          <li>派生通道表达式，含零相位滤波 <code>lp0</code> / <code>hp0</code></li>
+          <li>A–B 区间测量、逐循环、分段统计，结果可存为通道</li>
+          <li>相位差与曲线拟合（单频 DFT，用真实时间戳）</li>
+          <li>HTTP 接口 / 28 个工具，可交给外部 AI 驱动</li>
+        </ul>
+        <ul class="en">
+          <li>Up to 7 overlaid independent Y axes</li>
+          <li>Derived-channel expressions with zero-phase <code>lp0</code> / <code>hp0</code></li>
+          <li>A-B measurement, per-cycle and per-segment stats, savable as channels</li>
+          <li>Phase difference and curve fitting (single-bin DFT on real timestamps)</li>
+          <li>HTTP interface with 28 tools, drivable by an external AI agent</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="zh">文档</h2><h2 class="en">Docs</h2>
+        <ul class="zh">
+          <li><a href="用户操作指南_v1.10.13.pdf">用户操作指南 (PDF)</a></li>
+          <li><a href="版本说明_v1.10.13.md">版本说明</a></li>
+          <li><a href="SHA256.txt">SHA256 清单</a></li>
+          <li>英文版：<a href="User%20Guide_v1.10.13.pdf">User Guide (PDF)</a></li>
+        </ul>
+        <ul class="en">
+          <li><a href="User%20Guide_v1.10.13.pdf">User Guide (PDF)</a></li>
+          <li><a href="版本说明_v1.10.13.md">Release notes (zh)</a></li>
+          <li><a href="SHA256.txt">SHA256 list</a></li>
+          <li>中文版：<a href="用户操作指南_v1.10.13.pdf">用户操作指南 (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="zh">开发者 Bob.Zhang · 问题与反馈 <a href="mailto:bob.zhang19s@gmail.com">bob.zhang19s@gmail.com</a></div>
+    <div class="en">Developer Bob.Zhang · Questions and feedback <a href="mailto:bob.zhang19s@gmail.com">bob.zhang19s@gmail.com</a></div>
+    <div class="zh" style="margin-top:6px">© 2026 Bob.Zhang　保留所有权利。可自由下载与使用；源码未公开。</div>
+    <div class="en" style="margin-top:6px">© 2026 Bob.Zhang. All rights reserved. Free to download and use; the source code is not published.</div>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   下载按钮的指向：
+   - REPO 留空时，若页面本身跑在 GitHub Pages 上（<user>.github.io/<repo>/），
+     自动推断 owner/repo，按钮指向 .../releases/latest；
+   - 页面和数据文件放在一起（本地或自己的服务器）时，按钮直接指向同目录的 exe；
+   - 把 REPO 填成 '用户名/仓库名' 可以强制指定。
+   ============================================================ */
+var REPO = '';
+
+(function(){
+  var btn = document.querySelector('a.btn');
+  var releasePage = (function(){
+    if (REPO) return 'https://github.com/' + REPO + '/releases/latest';
+    var host = location.hostname || '';
+    var seg = location.pathname.split('/').filter(Boolean);
+    if (/(^|\.)github\.io$/i.test(host) && seg.length) {
+      return 'https://github.com/' + host.split('.')[0] + '/' + seg[0] + '/releases/latest';
+    }
+    if (host === 'github.com' && seg.length >= 2) {
+      return 'https://github.com/' + seg[0] + '/' + seg[1] + '/releases/latest';
+    }
+    return null;
+  })();
+  if (releasePage) {
+    btn.href = releasePage;
+    btn.removeAttribute('download');
+    ['dlAlt','dlAltEn'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.style.display = '';
+    });
+    ['dlAltLink','dlAltLinkEn'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) { el.href = releasePage; el.target = '_blank'; el.rel = 'noopener'; }
+    });
+  }
+})();
+
+(function(){
+  var body = document.body, btn = document.getElementById('lang');
+  var saved = null;
+  try { saved = localStorage.getItem('adv.lang'); } catch(e){}
+  if (saved === 'en') { body.classList.add('en'); btn.textContent = '中文'; }
+  btn.addEventListener('click', function(){
+    var en = body.classList.toggle('en');
+    btn.textContent = en ? '中文' : 'EN';
+    try { localStorage.setItem('adv.lang', en ? 'en' : 'zh'); } catch(e){}
+  });
+  var cp = document.getElementById('cp');
+  cp.addEventListener('click', function(){
+    var txt = document.getElementById('sha').textContent.trim();
+    var done = function(){ cp.textContent = '已复制 / Copied'; setTimeout(function(){ cp.textContent = '复制 / Copy'; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt, done); });
+    } else { fallback(txt, done); }
+  });
+  function fallback(txt, done){
+    var ta = document.createElement('textarea');
+    ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>
