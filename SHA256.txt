@@ -1,0 +1,174 @@
+Advanced Data Viewer v1.10.13  --  SHA-256
+========================================
+55b9607de59bd95abfd695494e326c4561fa8d3c7522de664878c8376532a299  Advanced Data Viewer_v1.10.13.exe
+46806481 bytes; FileVersion 1.10.13.0 / ProductVersion 1.10.13
+开发者：Bob.Zhang；问题与反馈：bob.zhang19s@gmail.com
+校验方法：Get-FileHash 'Advanced Data Viewer_v1.10.13.exe' -Algorithm SHA256
+回退文件：_backup\Advanced Data Viewer_v1.10.12.exe
+
+从 v1.10.13 起，发布的 exe 文件名带版本号（Advanced Data Viewer_v<版本>.exe），
+交付目录里只放一个 exe，旧版自动移进 _backup\。
+下面 v1.10.12 及更早的记录里写的仍是当时的名字（不带版本号）。
+
+以下为 v1.10.12 历史记录：
+
+Advanced Data Viewer v1.10.12  --  SHA-256
+========================================
+fc49a5b5a22c796835578ac9ac56c83aecab46bebfff5bc1573fe528290a9929  Advanced Data Viewer.exe
+46804230 bytes; FileVersion 1.10.12.0 / ProductVersion 1.10.12
+开发者：Bob.Zhang；问题与反馈：bob.zhang19s@gmail.com
+校验方法：Get-FileHash 'Advanced Data Viewer.exe' -Algorithm SHA256
+回退文件：_backup\Advanced Data Viewer_v1.10.11.exe
+
+以下为 v1.10.11 历史记录：
+
+Advanced Data Viewer v1.10.11  --  SHA-256
+========================================
+9d792f253c0ed8a1f9f8ba11d226b029a305625e0c078cabf83bc2f0ae56b0d2  Advanced Data Viewer.exe
+47861488 bytes; FileVersion 1.10.11.0 / ProductVersion 1.10.11
+校验方法：Get-FileHash 'Advanced Data Viewer.exe' -Algorithm SHA256
+回退文件：_backup\Advanced Data Viewer_v1.10.10.exe
+
+以下为 v1.10.10 历史记录：
+
+Advanced Data Viewer v1.10.10  --  SHA-256
+========================================
+b9f066480bf07009eeb4d423831ea15a49df7bbc5f24a439eff16e9d9a55e926  Advanced Data Viewer.exe
+47855301 bytes; FileVersion 1.10.10.0 / ProductVersion 1.10.10
+校验方法：Get-FileHash 'Advanced Data Viewer.exe' -Algorithm SHA256
+回退文件：_backup\Advanced Data Viewer_v1.10.9.exe
+
+以下为 v1.10.9 历史记录：
+
+Advanced Data Viewer v1.10.9  --  SHA-256
+========================================
+8181f04f5528a6c6cdeb2bb512ddc9da061989d80b4a1d37c318a6263fb6dc7d  Advanced Data Viewer.exe
+47856254 bytes; FileVersion 1.10.9.0 / ProductVersion 1.10.9
+开发者：Bob.Zhang；问题与反馈：bob.zhang19s@gmail.com
+校验方法：Get-FileHash 'Advanced Data Viewer.exe' -Algorithm SHA256
+回退文件：_backup\Advanced Data Viewer_v1.10.8.exe
+
+以下为 v1.10.8 历史记录：
+
+Advanced Data Viewer v1.10.8  --  SHA-256
+========================================
+0443f2d2062ec8d7cd1819d87e423558b5c723db296f2e1b52a4821278c36ca7  Advanced Data Viewer.exe
+47852709 bytes; FileVersion 1.10.8.0 / ProductVersion 1.10.8
+校验方法：Get-FileHash 'Advanced Data Viewer.exe' -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.7.exe
+
+以下为 v1.10.7 历史记录：
+
+AI Data Viewer v1.10.7  --  SHA-256
+==================================
+f1390187cf25e404c0de4b39077d4164fc2c78402a4c0caa70f7f819224337a5  AI Data Viewer.exe
+47854531 bytes; FileVersion 1.10.7.0 / ProductVersion 1.10.7
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.6.exe
+
+以下为 v1.10.6 历史记录：
+
+AI Data Viewer v1.10.6  --  SHA-256
+==================================
+52f686ada77ec819ec38a116f7e01264e26caa4f42bef22682effbf3154300fb  AI Data Viewer.exe
+47851585 bytes; FileVersion 1.10.6.0 / ProductVersion 1.10.6
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.5.exe
+
+以下为 v1.10.5 历史记录：
+
+AI Data Viewer v1.10.5  --  SHA-256
+==================================
+
+973b113cd2e17ea46001298a01b035b3ccb7f6c09e7b39cde6420906c711f66f  AI Data Viewer.exe
+47852008 bytes; FileVersion 1.10.5.0 / ProductVersion 1.10.5
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.4.exe
+
+以下为 v1.10.4 历史记录：
+
+AI Data Viewer v1.10.4  --  SHA-256
+==================================
+
+0aafddc220d204d66d51e77ea0a55cf4945954ae75a3e5ed096ecb40b7b0cf06  AI Data Viewer.exe
+47843093 bytes; FileVersion 1.10.4.0 / ProductVersion 1.10.4
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.3.exe
+
+以下为 v1.10.3 历史记录：
+
+AI Data Viewer v1.10.3  --  SHA-256
+==================================
+
+dd3b19ef9dae0d40fa866f3385594e1ef556364381c5e564cee8f36eaab9c368  AI Data Viewer.exe
+47844077 bytes; FileVersion 1.10.3.0 / ProductVersion 1.10.3
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.2.exe
+
+以下为 v1.10.2 历史记录：
+
+AI Data Viewer v1.10.2  --  SHA-256
+==================================
+
+091cf2d2c479208555e714eef9bee7c964565c05c00040f1e7150ad3387e7d7a  AI Data Viewer.exe
+47842963 bytes; FileVersion 1.10.2.0 / ProductVersion 1.10.2
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.1.exe
+
+以下为 v1.10.1 历史记录：
+
+AI Data Viewer v1.10.1  --  SHA-256
+==================================
+
+b54cba782eae34b7bc5e682ec8273bd355efeba0dc9d928f5da3dddf905684d5  AI Data Viewer.exe
+47840576 bytes; FileVersion 1.10.1.0 / ProductVersion 1.10.1
+校验方法：Get-FileHash "AI Data Viewer.exe" -Algorithm SHA256
+回退文件：_backup\AI Data Viewer_v1.10.exe
+
+以下为 v1.10 历史记录：
+
+AI Data Viewer v1.10  --  SHA-256
+================================
+
+11736c00535d6d27837abe3169763b7628326f47595c9797669980b216ad9110  AI Data Viewer.exe
+46783973 bytes   (46.78 MB)
+FileVersion 1.10.0.0 / ProductVersion 1.10
+
+标题栏显示 "v1.10"、`--version` 输出 `AI Data Viewer v1.10` 即为本版；
+如果看到的还是别的号，说明窗口是旧的（exe 被替换前就在运行），关掉重开即可。
+回退：`rollback_to_v1.6.1.cmd`，或直接拿 `_backup\` 里的 v1.9.1 / v1.9 替换回来。
+
+同批 web 资源（exe 内 /web/* 与之逐字节一致，可直接用浏览器取 http://127.0.0.1:8770/web/plot.js 核对）：
+  index.html  26042229fe6d40f44f9e76254c8ca6716333c0a55674262b34309a4330ef9d49
+  app.js      9a66109b599f8e6f1f68d6472d01b49194256c5fa42f0c0e9275160d9adc19ef
+  plot.js     95ac3c5af42bff239198be08c1c7acd030e052c77171abe9df3e356f2ee830c6
+  i18n.js     6bd20660e29c9cd4d839ab3d1125920b7c6f08c3a81cd5aafd321a329739aa72
+  style.css   d571ecc67693b3dbd2413c282e6e27e424ba53cc95108e84e7f1b05f368eb7b7
+
+历史版本（留档）：
+  v1.9.1 46768312 bytes  4402906226063bac22bc1865390425ce37e52aeb62bbf39ae7304962963674da
+        （M3 + 品牌残留清扫；与 v1.9 功能相同）
+  v1.9  46769019 bytes  a20ac4906caf84cd48cd61bfc14ee81c92a9259d53ed7a3f3585639f20ca5af8
+        （M3 收官版，源码里还留着三处品牌文字，被 v1.9.1 替换）
+  v1.6c 46736663 bytes  5f7fd46c93480d89bb209b3811e4736a2e82cf667f2dfdbcff13d40829fdecd6
+  v1.6b 46736474 bytes  2e18965fca3b82d11c5cd8a8949410c3134e91cd146712c2983ebbf03e952f3a
+        （左右分列已就位，但右侧刻度线朝外，数字被看成负号）
+  v1.6a 46734976 bytes  b23b66d9744f83fd187667adf764b4dfe41a98f4f70e313b5ec26e069e7b2f0b
+        （轴列全排右侧的中间版，按左右分列重做后废弃）
+  v1.5  46731423 bytes  1bd31ac250f0e98386ef4c83a9950bfefef4b16b7b6488e6a6af0469027de178
+  v1.4  46737076 bytes  7f7aa0be38bcb7afcb4722a03d6763cf149c6ccae886cefb374a153c07fdc6ee
+  v1.3  46730734 bytes  65117b474553605f61835981d45f7c1641fb74d4c2205045e56f794492973a4f
+  v1.2  46730545 bytes  5c58865a6997f83fa9980426cafb795dc5bcbc693005e680731aba7be226a485
+  v1.1  46726508 bytes  699bb76833b0e5f1751eb0eb77fff8abd19c1069550d0fd64eddf27305bc2b40
+  v1.0  46721529 bytes  c62f7e3bffa642869fc6851808373ad2e1eef00b6ccc754ca757a74d39994207
+
+校验方法（Windows 自带）：
+  certutil -hashfile "Advanced Data Viewer.exe" SHA256
+
+或 PowerShell：
+  Get-FileHash "Advanced Data Viewer.exe" -Algorithm SHA256
+
+
+
+
+

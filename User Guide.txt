@@ -1,0 +1,311 @@
+Advanced Data Viewer v1.10.13 --  a test data viewer with an AI control interface
+========================================================================================
+Developer: Bob.Zhang
+Questions & feedback: bob.zhang19s@gmail.com
+For step-by-step GUI instructions, see "User Guide_v1.10.13.md" in this folder.
+
+
+WHAT IT IS
+----------
+A standalone data viewer for general materials test data. It opens the machine's native records directly (no conversion needed) as
+well as text exports (.csv / .tsv / .txt / .dat), draws up to 7 stacked Y axes, and
+exposes an HTTP control interface so that an external AI agent can drive it.
+
+There is no chat window inside the program on purpose: the viewer only displays
+data and publishes an API; the "talking" is done by the agent.
+
+
+STARTING
+--------
+The whole program is a single self-contained exe (about 47 MB). Copy that one
+file anywhere and double-click it -- there is no folder of libraries to keep
+together.
+
+  * A console window appears. Do not close it -- closing it quits the program.
+  * A browser window opens at http://127.0.0.1:8770 (Chrome/Edge app mode,
+    no address bar). Any other browser works too, just open that URL.
+  * UI language: click "EN / 中文" at the top right to switch (the choice is
+    remembered); ?lang=en or ?lang=zh also works, e.g. for demos or screenshots.
+
+  * Every start takes roughly 4-5 seconds: the exe unpacks its runtime into
+    %TEMP%\_MEIxxxx before the window appears. That is normal for a single-file
+    build (the folder build starts instantly but has to be copied as a folder).
+
+On first run the following files are created next to the exe:
+
+  config.json    port, data roots, optional LLM endpoint
+  last.json      the last opened file (recorded only, NOT auto-opened)
+  colors.json    per-curve colours you have customised
+  exports/       exported PNG / CSV files
+
+The program starts with an empty canvas every time. Pick a file yourself with
+the "..." button next to "File Name".
+
+
+POINTING IT AT YOUR DATA
+------------------------
+Edit config.json with Notepad:
+
+  {
+   "port": 8770,
+   "roots": ["D:\\test-data"],
+   "default_dir": "D:\\test-data",
+   "llm": null,
+   "restore_last": false
+  }
+
+"roots" is the set of folders that are searched when you type a partial file
+name or when the AI asks for a file. "default_dir" is what the file browser
+opens to.
+
+Alternatively pass it on the command line:
+
+  "Advanced Data Viewer_v1.10.13.exe" --data-root "D:\test-data"
+
+Useful switches:
+
+  --port 8780             use another port
+  --host 0.0.0.0          listen on all interfaces (default: 127.0.0.1 only)
+  --no-browser            do not open a browser window
+  --open "some.csv"       open a file at startup
+  --restore               re-open the file from last.json at startup
+  --no-restore            force a blank start (default behaviour)
+  --version               print the version and exit
+
+
+MOUSE AND KEYBOARD
+------------------
+  left drag, left -> right      zoom into the selected range (orange box)
+  left drag, right -> left      zoom out by the same ratio (cyan box, "xN")
+  right drag (or middle drag)   pan along the X axis, zoom level unchanged
+  right CLICK (no drag)         context menu: phase comparison, global view,
+                                export PNG, export CSV
+  wheel                         zoom around the pointer
+  double-click / Esc / button   show everything ("Global View")
+
+A right-click that moves is still a pan; a right-click that does not move opens
+the menu. There is no separate mode switch.
+
+HOW FAR YOU CAN ZOOM
+Zoom depth has no fixed ratio limit. The only rule is that the visible window
+must contain at least 6 raw samples; if you ask for a narrower window the view
+is widened to the nearest samples. So an 8 kHz burst can be zoomed to
+microseconds, while a 1 sample/second hold period stops where the data stops --
+that is the data, not the program.
+
+Data reduction switches automatically with zoom level (raw polyline / stride /
+min-max envelope with fill), so deep zoom always shows the true waveform and
+wide views never turn into a picket fence of vertical spikes.
+
+
+GRAPH DEFINITION
+----------------
+"Graph Definition" opens the settings dialog:
+
+  Draw Type            Lines / Markers / Lines+Markers / Step
+  Data Reduction       Downsampling / Average / None
+  Number of Graphs     1 to 7 Y axes stacked vertically
+  Points per second    decimation cap when X is a time axis
+  X-Axis               channel, AutoScale or MinMax, log, min/max, grid
+  per Y axis           channel list, add/remove curves, colour swatch
+
+  Independent Y       tick it to overlay channels with their own scales: the first
+                      axis sits on the left, the others on the right, ticks and
+                      axis line coloured to match each curve
+
+Independent Y accepts up to 7 curves, i.e. 7 independent axes. It needs at least
+TWO curves in the same graph -- with a single curve the checkbox is greyed out
+and says "(needs >= 2 curves)", because there is nothing to give a second scale
+to; press + next to Channel to overlay another curve first. After clicking Ok the
+toast tells you whether independent Y actually took effect. The axes are split
+to both sides -- the first ceil(n/2) curves sit on the left,
+the rest on the right, and curve #1 keeps the innermost left slot (the classical
+primary axis; the grid follows it). Every axis gets its own coloured vertical
+line, 3 px tick marks and a rotated title with the full name and unit (left side
+reads bottom-to-top, right side top-to-bottom). Each column is sized to the real
+width of its own numbers, so columns never bleed into each other; with many curves
+the tick count per axis drops to 5-6 so the numbers do not pile up, and the top
+legend is dropped because the axis titles already name every curve.
+The same thing over the API: set_y (mode=add) seven channels, then
+set_panels(count=1, overlay=true).
+
+Derived channels (make a new channel out of a formula, e.g. stress = load / area)
+------------------------------------------------------------------------------
+Toolbar ƒ button, or right-click the plot and pick "New derived channel...".
+Type an expression, press Test to see min / max / mean / valid points without
+registering anything, then Create and plot. Channel names with spaces must be
+quoted -- "Ch A-1" / 19.63 -- and clicking a name in the list inserts it for
+you. Functions: abs sqrt log exp min max diff integ lp hp movmean shift; lp0 and hp0 are the zero-phase versions (forward-backward, no phase lag) -- use those for phase/loss work, because the one-way lp/hp adds -atan(f/fc) of fake phase (at fc=40 that is 14 degrees at 10 Hz).
+A derived channel behaves like any other channel afterwards (plot it, run stats on
+it, reference it from another expression); it is marked with a ƒ and lives in
+memory only, never written back to the data file.
+
+The top half of that dialog is the list of existing derived channels. Each row can
+be plotted, edited or deleted. Edit refills the form and turns the button into
+"Save changes" -- renaming drops the old channel and re-creates it under the new
+name; changing the expression recomputes it. Delete asks for a second click and
+also removes the channel from every graph it was drawn on. Native channels cannot
+be deleted.
+
+Cursors and the measurement panel
+---------------------------------
+Right-click the plot and pick "Set cursor A" / "Set cursor B" to drop a vertical
+cursor at that point; drag within 6 px of a line to move it (the pointer turns into
+a left-right arrow). The status bar shows A, B, the delta and 1/delta. Right-click
+-> "Measure A-B range..." opens the measurement panel on the right: one row per
+curve with min / max / mean / peak-to-peak / RMS / sigma / zero-crossings / period /
+frequency / slope / valid ratio, plus a CSV export of all fields. The panel is a
+docked column, not a dialog -- the plot shrinks to give it room and expands again
+when you close it.
+
+Phase in the A-B panel
+----------------------
+With at least two plotted curves, the panel computes their phase difference on
+the current A-B range. Choose a reference and comparison channel, optionally
+enter a known frequency in Hz, or leave it blank for automatic estimation.
+Positive phase means the comparison channel leads. "Details" opens the existing
+multi-channel phase dialog with the same A-B range.
+
+Curve fitting in the A-B panel
+------------------------------
+Choose a channel and a linear trend, polynomial of degree 2-6, or single-tone
+sine fit. The panel returns the explicit equation, R-squared, RMSE and point
+count. Copy the equation or overlay the fitted curve as a result channel within
+A-B; source data is unchanged. Polynomial equations use
+u=(x-x_origin)/x_scale to keep narrow time ranges numerically stable. Low
+R-squared indicates a poor model for the selected interval.
+
+Cycles (second block of the panel)
+----------------------------------
+Pick a channel and a split method (peak/valley pairs, or same-direction zero
+crossings), then Run. The summary line gives cycle count, mean period, period
+coefficient of variation, mean amplitude and the half-run amplitude drift. The
+table lists t0 / T / amplitude / mean / peak-to-peak / rise ratio per cycle.
+
+Segments (third block of the panel)
+-----------------------------------
+Pick a channel, a split method (by time / by cycle) and the step in seconds, then
+Run. The summary gives the segment count plus the first-to-last change of mean and
+peak-to-peak; the table lists start / stop / points / mean / p-p / amplitude / RMS
+per segment. Splitting by time works on any data -- it does NOT require a segment
+marker channel in the file. The AI side also has by=boundaries (you supply the
+edges) and by=flag (only when the file happens to carry a marker channel).
+
+Saving a result as a channel (the "Save as channel" button in each block)
+------------------------------------------------------------------------
+Type a name in the Name box at the bottom of the panel (blank = auto: meas1 / cyc1
+/ seg1), pick which statistic to keep (mean / p-p / amplitude / RMS / min / max...)
+and click Save as channel. The new channel is tagged with a sigma and a "result"
+badge: you can plot it, use it in expressions and run further statistics on it, but
+its expression is read-only (delete and re-run instead). A measurement becomes a
+constant over the measured range; per-cycle and per-segment results become a
+staircase, one step per cycle/segment.
+
+Click a colour swatch to open the system colour picker. A single-curve colour
+change is remembered per file (colors.json). Bulk recolouring (e.g. the AI
+saying "make every curve grey") applies to the current view only and is NOT
+persisted -- otherwise a one-off instruction would repaint the file forever.
+To get the default palette back: call set_palette with reset=true, or delete
+that file's entry from colors.json.
+
+The number of graphs is capped by the number of usable channels in the current
+file; if you ask for 7 axes on a 4-column CSV you get 4 and a short notice.
+
+
+EXPORT GRAPH
+------------
+  PNG     rendered server side with matplotlib, exactly what you see
+  CSV     the current view range at full resolution (not decimated)
+  clipboard / open export folder
+
+Exports land in exports/ unless you pass an absolute path.
+
+
+AI CONTROL (the point of this program)
+--------------------------------------
+The interface is plain HTTP on localhost, no API key, no network access needed.
+
+  GET  /api/tools              28 tool definitions, OpenAI/Ollama compatible
+  GET  /api/state              current file, graph definition, view, AI flag
+  GET  /api/events?since=<seq> incremental event stream (human + AI actions)
+  GET  /api/help               this endpoint list
+
+  POST /api/call               {"tool":"set_view","args":{"x0":600,"x1":1200}}
+  POST /api/command            {"text":"open sample_01, plot the
+                                first channel vs time, zoom to 600-1200 s"}
+
+A one-liner to prove it works (Windows cmd):
+
+  curl -X POST http://127.0.0.1:8770/api/command ^
+       -H "Content-Type: application/json" ^
+       -d "{\"text\":\"global view\"}"
+
+While an agent holds control, the badge in the top-right corner turns orange
+("AI in control"); otherwise it stays dim ("API"). Clicking it copies the API
+address to the clipboard.
+
+Example scripts (Python, standard library only) are in the source folder:
+
+  demo_agent.py     minimal end-to-end walkthrough
+  smoke_agent.py    98 assertions covering the whole tool surface (97 pass, 1 skipped)
+
+The 28 tools: list_files, resolve_file, open_file, get_state, list_channels,
+channel_stats, math_channel, drop_channel, measure, cycle_stats, segment_stats,
+find_events, phase_diff, fit_curve, set_x, set_y, remove_y, set_palette, set_curve_color,
+set_panels, set_options, set_view, zoom_to_peak, export_csv, export_png,
+set_ai_mode, set_y_offset, set_time_offset.
+
+PHASE COMPARISON (phase_diff)
+-----------------------------
+Compares several sinusoidal channels over one region and returns the phase of
+each channel relative to a reference, plus the equivalent time shift, amplitude
+ratio and a single-tone fit quality (r2).
+
+In the UI: right-click the plot -> "比较相位差…". The dialog takes
+
+  * region      "follow current view" by default, or type x0/x1 yourself
+  * reference   pick one channel from the dropdown
+  * channels    tick the ones to compare (the plotted ones are pre-ticked)
+  * frequency   leave blank to auto-detect the fundamental
+
+and shows a table: amplitude, phase difference, time shift, amplitude ratio,
+r2. Rows whose r2 is below 0.8 are highlighted -- those are not clean sines.
+
+Over HTTP:
+
+  POST /api/call
+  {"tool":"phase_diff","args":{"channels":["Force","Disp"],
+                               "reference":"Force",
+                               "x0":600.0,"x1":1200.0}}
+
+  * x0/x1 may be omitted -- then the region is whatever the window shows.
+  * freq may be omitted -- the fundamental is estimated from zero crossings and
+    then refined by maximising |X(f)|; supply it if you already know the test
+    frequency.
+  * Phase is computed from the real sample timestamps (single-bin DFT, Hann
+    window), so it stays correct on files whose sampling is bursty
+    (0.12 ms inside a burst, 1 s during a hold).
+  * phase_diff_deg = channel phase minus reference phase, wrapped to +/-180.
+    Positive means the channel LEADS the reference. time_shift_ms is the same
+    number expressed as time (positive = leads).
+  * r2 tells you whether the region really is a clean sine; a low r2 (e.g. a
+    constant pressure channel) means the phase number is meaningless.
+  * Accuracy on synthetic data with a known offset: 0.000 deg for uniform
+    sampling, <0.15 deg under 0.4-1.6 ms timestamp jitter.
+
+
+NOTES
+-----
+* Single file, no dependencies: the exe alone is enough. Python, numpy, pandas
+  and matplotlib are all inside it.
+* Every start re-unpacks the runtime into %TEMP%\_MEIxxxx (hence the 4-5 s).
+  A clean exit removes that folder; if the process is force-killed, a stale
+  _MEIxxxx folder may stay behind -- it is safe to delete by hand.
+* Only one instance can own a port. Launching a second copy on the same port
+  simply re-opens the browser at the running instance.
+* If an update does not show up in an already-open window, press Ctrl+F5 or
+  close and reopen the window; the page is served with no-store, but a window
+  that is already running keeps its old DOM.
+* Behind a system HTTP proxy, add 127.0.0.1 to NO_PROXY before letting an agent
+  call the API (the bundled demo_agent.py / smoke_agent.py already bypass it).
+* Tested on Windows 11 with data files up to 270 MB / 380k rows.
