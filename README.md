@@ -1,5 +1,7 @@
 # Advanced Data Viewer
 
+**中文** ｜ [English](#english)　　📥 [下载 / Download](https://adv-data-viewer.app.workbuddy.host/)
+
 **通用材料试验数据查看器（Windows，单文件免安装），带一个可以被 AI 直接驱动的 HTTP 接口。**
 
 直接打开试验机的原始记录，不需要先导出成 CSV；也支持 `.csv` / `.tsv` / `.txt` / `.dat` 等通用文本数据文件。
@@ -65,6 +67,8 @@ POST /api/command           {"text":"打开 sample_01，画第 1 通道对时间
 ---
 
 ## English
+
+[中文](#advanced-data-viewer) ｜ 📥 [Download](https://adv-data-viewer.app.workbuddy.host/)
 
 A single-file Windows viewer for general materials test data, with an HTTP interface an AI agent can drive.
 
